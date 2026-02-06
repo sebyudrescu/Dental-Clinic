@@ -1,0 +1,103 @@
+ Soluzioni Specifiche per Higgsfield API
+1. Problemi Comuni con le Code di Attesa
+Le code di attesa si verificano durante il traffico elevato - controlla lo stato frequentemente o usa i webhook Browserai.
+Implementa i webhook per evitare timeout:
+pythonimport higgsfield_client
+
+request_controller = higgsfield_client.submit(
+    'bytedance/seedream/v4/text-to-image',
+    arguments={
+        'prompt': 'A serene lake at sunset',
+        'resolution': '2K',
+        'aspect_ratio': '16:9',
+    },
+    webhook_url='https://tuo-sito.com/webhook'  # ✅ IMPORTANTE!
+)
+2. Gestione degli Errori di Timeout
+Per scalare, invia richieste multiple in parallelo, rispettando i limiti di rate - i tier gratuiti tipicamente limitano a 10 generazioni concorrenti Browserai.
+Aggiungi retry logic e gestione errori:
+pythonimport time
+import higgsfield_client
+
+def genera_immagine_con_retry(prompt, max_tentativi=3):
+    for tentativo in range(max_tentativi):
+        try:
+            result = higgsfield_client.subscribe(
+                'bytedance/seedream/v4/text-to-image',
+                arguments={
+                    'prompt': prompt,
+                    'resolution': '2K',
+                    'aspect_ratio': '16:9',
+                }
+            )
+            return result['images'][0]['url']
+        
+        except Exception as e:
+            print(f"Tentativo {tentativo + 1} fallito: {e}")
+            if tentativo < max_tentativi - 1:
+                # Backoff esponenziale
+                wait_time = (2 ** tentativo) * 5  # 5s, 10s, 20s
+                print(f"Riprovo tra {wait_time} secondi...")
+                time.sleep(wait_time)
+            else:
+                raise
+3. Monitora lo Stato della Richiesta
+Usa il polling dello stato per monitorare le richieste in tempo reale Cloudcoding:
+pythonimport higgsfield_client
+
+request_controller = higgsfield_client.submit(
+    'bytedance/seedream/v4/text-to-image',
+    arguments={'prompt': 'Football ball', 'resolution': '2K'}
+)
+
+for status in request_controller.poll_request_status():
+    if isinstance(status, higgsfield_client.Queued):
+        print('In coda...')
+    elif isinstance(status, higgsfield_client.InProgress):
+        print('Generazione in corso...')
+    elif isinstance(status, higgsfield_client.Completed):
+        print('✅ Completato!')
+        break
+    elif isinstance(status, (higgsfield_client.Failed, higgsfield_client.NSFW)):
+        print('❌ Fallito!')
+        break
+
+result = request_controller.get()
+print(result['images'][0]['url'])
+
+🛠️ Se l'Errore 522 Persiste
+L'errore 522 è tipicamente un problema lato server. Ecco cosa fare:
+A. Verifica lo Stato del Servizio
+
+Controlla: https://www.saashub.com/higgsfield-status
+Controlla: https://www.toolify.ai/is-it-down/higgsfield
+
+B. Soluzioni Generali per Errore 522
+L'errore 522 indica un timeout di connessione tra Cloudflare e il server di origine - il problema risiede quasi sempre nel server di origine, non in Cloudflare Higgsfield.
+Dal lato cliente, puoi:
+
+Aumenta il timeout nelle tue richieste:
+
+pythonimport requests
+
+response = requests.post(
+    "https://api.higgsfield.ai/v1/generate",
+    headers={"Authorization": f"Bearer {API_KEY}"},
+    json={...},
+    timeout=120  # ✅ Aumenta a 120 secondi
+)
+
+Usa il metodo asincrono per evitare blocchi:
+
+pythonimport asyncio
+import higgsfield_client
+
+async def genera_async():
+    result = await higgsfield_client.subscribe_async(
+        'bytedance/seedream/v4/text-to-image',
+        arguments={'prompt': 'Sunset', 'resolution': '2K'}
+    )
+    return result['images'][0]['url']
+
+# Esegui
+url_immagine = asyncio.run(genera_async())
