@@ -6,11 +6,24 @@ import { Badge } from './ui/Badge';
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-white via-warm-gray to-white min-h-screen flex items-center overflow-hidden">
-      {/* Decorative Background Elements */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src="/studio-dentistico-delnegro-segrate.jpg" 
+          alt="Studio Dentistico Del Negro Segrate"
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Gradient Overlay - più leggero su desktop, più scuro su mobile per leggibilità */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/85 to-white/75 sm:from-white/90 sm:via-white/75 sm:to-white/60"></div>
+        {/* Subtle colored overlay per mantenere i colori del brand */}
+        <div className="absolute inset-0 bg-gradient-to-br from-petrol-blue/5 via-transparent to-luxury-gold/5"></div>
+      </div>
+      
+      {/* Decorative Background Elements - ridotti per non competere con l'immagine */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-luxury-gold/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-petrol-blue/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-luxury-gold/3 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-petrol-blue/3 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32 w-full">
