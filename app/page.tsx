@@ -16,6 +16,10 @@ export default function Home() {
       <div id="hero">
         <Hero />
       </div>
+      <BeforeAfter />
+      <div id="testimonianze">
+        <Testimonials />
+      </div>
       <div id="chi-siamo">
         <Values />
       </div>
@@ -23,10 +27,6 @@ export default function Home() {
         <Services />
       </div>
       <WhyChooseUs />
-      <BeforeAfter />
-      <div id="testimonianze">
-        <Testimonials />
-      </div>
       <div id="team">
         <TeamWithImages />
       </div>
