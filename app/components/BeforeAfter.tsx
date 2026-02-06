@@ -48,39 +48,39 @@ export default function BeforeAfter() {
   const [selectedTreatment, setSelectedTreatment] = useState(0);
 
   return (
-    <section className="py-20 lg:py-32 bg-warm-gray relative overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-32 bg-warm-gray relative overflow-hidden">
       {/* Decorative Background */}
       <div className="absolute inset-0 opacity-50">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-petrol-blue/10 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-l from-luxury-gold/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-petrol-blue/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-l from-luxury-gold/10 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <Badge variant="secondary" icon={<Sparkles className="w-4 h-4" />}>
             I nostri risultati
           </Badge>
-          <h2 className="text-4xl lg:text-5xl font-light text-dark-gray mb-6 mt-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-dark-gray mb-4 sm:mb-6 mt-4 sm:mt-6 leading-tight px-4">
             Trasformazioni
             <span className="block font-semibold mt-2 bg-gradient-to-r from-petrol-blue to-luxury-gold bg-clip-text text-transparent">
               che parlano da sole
             </span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-luxury-gold to-petrol-blue mx-auto mb-6 rounded-full"></div>
-          <p className="text-lg text-gray-600 font-light leading-relaxed">
+          <div className="w-20 h-1.5 bg-gradient-to-r from-luxury-gold to-petrol-blue mx-auto mb-4 sm:mb-6 rounded-full"></div>
+          <p className="text-base sm:text-lg text-gray-600 font-light leading-relaxed px-4">
             Ogni sorriso è unico. Guarda alcuni dei risultati straordinari
             che abbiamo ottenuto per i nostri pazienti.
           </p>
         </div>
 
         {/* Treatment Selector */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10 sm:mb-12 px-4">
           {treatments.map((treatment, index) => (
             <button
               key={treatment.id}
               onClick={() => setSelectedTreatment(index)}
-              className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-medium transition-all duration-300 ${
                 selectedTreatment === index
                   ? 'bg-petrol-blue text-white shadow-lg scale-105'
                   : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-lg'
@@ -93,23 +93,23 @@ export default function BeforeAfter() {
 
         {/* Before/After Display */}
         <div className="max-w-5xl mx-auto">
-          <Card hover className="p-8 lg:p-12">
-            <div className="space-y-8">
+          <Card hover className="p-6 sm:p-8 lg:p-12">
+            <div className="space-y-6 sm:space-y-8">
               {/* Treatment Info */}
-              <div className="text-center space-y-4">
+              <div className="text-center space-y-3 sm:space-y-4">
                 <Badge variant="outline">
                   {treatments[selectedTreatment].category}
                 </Badge>
-                <h3 className="text-3xl font-semibold text-dark-gray">
+                <h3 className="text-2xl sm:text-3xl font-semibold text-dark-gray px-4 leading-tight">
                   {treatments[selectedTreatment].title}
                 </h3>
-                <p className="text-gray-600 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
                   {treatments[selectedTreatment].description}
                 </p>
               </div>
 
               {/* Before/After Images */}
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
                 {/* Before */}
                 <div className="group relative">
                   <div className="absolute top-4 left-4 z-10">
@@ -156,26 +156,26 @@ export default function BeforeAfter() {
               </div>
 
               {/* Transformation Arrow */}
-              <div className="flex justify-center">
-                <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-petrol-blue to-luxury-gold rounded-full text-white font-medium shadow-lg">
+              <div className="flex justify-center px-4">
+                <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-petrol-blue to-luxury-gold rounded-full text-white text-sm sm:text-base font-medium shadow-lg">
                   <span>Trasformazione completa</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </div>
 
               {/* Features List */}
-              <div className="grid md:grid-cols-3 gap-6 pt-8 border-t border-gray-100">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-gray-100">
                 <div className="flex items-center gap-3 justify-center">
-                  <Sparkles className="w-6 h-6 text-luxury-gold" />
-                  <span className="text-gray-700 font-medium">Risultato veloce</span>
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium">Risultato veloce</span>
                 </div>
                 <div className="flex items-center gap-3 justify-center">
-                  <Sparkles className="w-6 h-6 text-petrol-blue" />
-                  <span className="text-gray-700 font-medium">Precisione massima</span>
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-petrol-blue flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium">Precisione massima</span>
                 </div>
                 <div className="flex items-center gap-3 justify-center">
-                  <Sparkles className="w-6 h-6 text-luxury-gold" />
-                  <span className="text-gray-700 font-medium">Qualità premium</span>
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-luxury-gold flex-shrink-0" />
+                  <span className="text-sm sm:text-base text-gray-700 font-medium">Qualità premium</span>
                 </div>
               </div>
             </div>
@@ -183,16 +183,16 @@ export default function BeforeAfter() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">
+        <div className="text-center mt-10 sm:mt-12 px-4">
+          <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
             Vuoi ottenere risultati simili per il tuo sorriso?
           </p>
           <a
             href="#contatti"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-petrol-blue text-white rounded-lg hover:bg-opacity-90 transition-all duration-300 hover:scale-105 shadow-lg font-medium text-lg"
+            className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-petrol-blue text-white rounded-lg hover:bg-opacity-90 transition-all duration-300 hover:scale-105 shadow-lg font-medium text-base sm:text-lg"
           >
             Prenota una consulenza gratuita
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
       </div>

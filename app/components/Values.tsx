@@ -41,34 +41,34 @@ const values = [
 
 export default function Values() {
   return (
-    <section className="py-20 lg:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl lg:text-5xl font-light text-dark-gray mb-6">
+    <section className="py-16 sm:py-20 lg:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-dark-gray mb-4 sm:mb-6 leading-tight">
             Perché scegliere
             <span className="block font-semibold mt-2">Dental Estetic</span>
           </h2>
-          <div className="w-16 h-1 bg-luxury-gold mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 font-light leading-relaxed">
+          <div className="w-16 h-1 bg-luxury-gold mx-auto mb-4 sm:mb-6"></div>
+          <p className="text-base sm:text-lg text-gray-600 font-light leading-relaxed px-4">
             La nostra missione è offrirti un'esperienza di cura dentale eccellente, 
             dove tecnologia, competenza e attenzione umana si incontrano.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {values.map((value, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-2xl bg-gradient-to-br from-white to-warm-gray hover:from-white hover:to-white hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-luxury-gold/30 hover:-translate-y-2"
+              className="group relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white to-warm-gray hover:from-white hover:to-white hover:shadow-2xl transition-all duration-500 border-2 border-transparent hover:border-luxury-gold/30 hover:-translate-y-2"
             >
               {/* Decorative corner accent */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-luxury-gold/10 to-transparent rounded-bl-full rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               <div className="relative">
-                <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-petrol-blue to-petrol-blue/80 flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 rounded-2xl bg-gradient-to-br from-petrol-blue to-petrol-blue/80 flex items-center justify-center text-white shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-dark-gray mb-4 group-hover:text-petrol-blue transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-dark-gray mb-3 sm:mb-4 group-hover:text-petrol-blue transition-colors leading-tight">
                   {value.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed text-sm">
@@ -76,7 +76,7 @@ export default function Values() {
                 </p>
                 
                 {/* Progress indicator */}
-                <div className="mt-6 h-1 w-0 bg-gradient-to-r from-petrol-blue to-luxury-gold rounded-full group-hover:w-full transition-all duration-700"></div>
+                <div className="mt-5 sm:mt-6 h-1 w-0 bg-gradient-to-r from-petrol-blue to-luxury-gold rounded-full group-hover:w-full transition-all duration-700"></div>
               </div>
             </div>
           ))}

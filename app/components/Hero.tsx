@@ -13,10 +13,10 @@ export default function Hero() {
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-petrol-blue/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
-          <div className="space-y-8 text-center lg:text-left animate-fade-in">
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left animate-fade-in">
             {/* Badge */}
             <div className="inline-flex animate-slide-down">
               <Badge variant="secondary" icon={<Sparkles className="w-4 h-4" />}>
@@ -25,8 +25,8 @@ export default function Hero() {
             </div>
 
             {/* Heading */}
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-light text-dark-gray leading-tight animate-slide-up">
+            <div className="space-y-4 md:space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light text-dark-gray leading-tight animate-slide-up">
                 Il tuo sorriso,
                 <span className="block font-semibold mt-2 bg-gradient-to-r from-petrol-blue to-luxury-gold bg-clip-text text-transparent">
                   la nostra arte
@@ -35,7 +35,7 @@ export default function Hero() {
               <div className="w-20 h-1.5 bg-gradient-to-r from-luxury-gold to-petrol-blue mx-auto lg:mx-0 rounded-full"></div>
             </div>
             
-            <p className="text-xl lg:text-2xl text-gray-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-in-delay">
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 font-light leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-in-delay px-4 sm:px-0">
               Odontoiatria estetica avanzata con tecnologie di ultima generazione. 
               Un'esperienza di cura personalizzata per il tuo benessere.
             </p>
@@ -61,21 +61,21 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* Trust Elements */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8 animate-fade-in-delay-3">
-              <div className="flex flex-col items-center lg:items-start gap-2 group">
+            {/* Trust Elements - Hidden on mobile, visible on desktop */}
+            <div className="hidden lg:grid grid-cols-3 gap-6 pt-8 animate-fade-in-delay-3">
+              <div className="flex flex-col items-start gap-2 group">
                 <div className="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Sparkles className="w-6 h-6 text-luxury-gold" />
                 </div>
                 <span className="text-sm font-medium text-gray-700">Tecnologie Avanzate</span>
               </div>
-              <div className="flex flex-col items-center lg:items-start gap-2 group">
+              <div className="flex flex-col items-start gap-2 group">
                 <div className="w-12 h-12 rounded-full bg-petrol-blue/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Shield className="w-6 h-6 text-petrol-blue" />
                 </div>
                 <span className="text-sm font-medium text-gray-700">Massima Igiene</span>
               </div>
-              <div className="flex flex-col items-center lg:items-start gap-2 group">
+              <div className="flex flex-col items-start gap-2 group">
                 <div className="w-12 h-12 rounded-full bg-luxury-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Award className="w-6 h-6 text-luxury-gold" />
                 </div>
